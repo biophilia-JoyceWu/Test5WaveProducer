@@ -1,0 +1,10 @@
+D:\课件\嵌入式系统\Test3 APP+串口通信\计算机软件\QA\QA\bin\Debug\QA.exe.config
+D:\课件\嵌入式系统\Test3 APP+串口通信\计算机软件\QA\QA\bin\Debug\QA.exe
+D:\课件\嵌入式系统\Test3 APP+串口通信\计算机软件\QA\QA\bin\Debug\QA.pdb
+D:\课件\嵌入式系统\Test3 APP+串口通信\计算机软件\QA\QA\obj\Debug\QA.csprojResolveAssemblyReference.cache
+D:\课件\嵌入式系统\Test3 APP+串口通信\计算机软件\QA\QA\obj\Debug\QA.csproj.ResolveComReference.cache
+D:\课件\嵌入式系统\Test3 APP+串口通信\计算机软件\QA\QA\obj\Debug\QA.Properties.Resources.resources
+D:\课件\嵌入式系统\Test3 APP+串口通信\计算机软件\QA\QA\obj\Debug\QA.csproj.GenerateResource.Cache
+D:\课件\嵌入式系统\Test3 APP+串口通信\计算机软件\QA\QA\obj\Debug\QA.exe
+D:\课件\嵌入式系统\Test3 APP+串口通信\计算机软件\QA\QA\obj\Debug\QA.pdb
+D:\课件\嵌入式系统\Test3 APP+串口通信\计算机软件\QA\QA\obj\Debug\QA.QA.resources
