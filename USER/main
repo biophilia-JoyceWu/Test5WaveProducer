@@ -1,0 +1,139 @@
+#include "led.h"
+#include "delay.h"
+#include "sys.h"
+#include "usart.h"
+#include "lcd.h"
+#include "key.h"  
+#include "24cxx.h" 
+#include "myiic.h"
+#include "stdio.h"
+#include "string.h"
+ int main(void)
+ { 
+	u8 key;
+	u16 i=0;
+	u8 len;	
+	u8 mlen;
+	u32 adr;
+	u8 t;
+	 u8 j;
+	 u8 k=1;
+	u32 slen2;
+	char slen[10];
+	char adr1[3];
+	char adr2[3];
+	char message[USART_REC_LEN -1];
+	#define SIZE sizeof(message)    
+	u8 send[SIZE];
+	char rec[USART_REC_LEN + 1];
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);// 设置中断优先级分组2
+	delay_init();	    	 //延时函数初始化	  
+	uart_init(9600);	 	//串口初始化为9600
+	LED_Init();		  		//初始化与LED连接的硬件接口
+	KEY_Init();				//按键初始化		 	
+	AT24CXX_Init();			//IIC初始化 
+	
+     for(i=0;i<3;i++)
+	{
+		LED0=0;
+		delay_ms(200);
+		LED0=1;
+		delay_ms(500);
+	}
+		 printf("\r\nI2C总线实验-AT24C02");
+			printf("\r\n陈悦林 陆振聪 组合");
+			printf("\r\n18 05 09 21 33 23");
+			printf("\r\n");
+		TIM2->CR1 &= ~TIM_CR1_CEN;
+			LED0=1;
+		LED_Init();
+		TIM3_Int_Init(1999,7199);
+		printf("\r\n请输入目标地址和数据");
+		printf("\r\n");
+	while(1)
+	{
+		if(USART_RX_STA&0x8000)
+		{		
+ 			len=USART_RX_STA&0x3fff;//得到此次接收到的数据长度
+			if(USART_RX_BUF[0]==' ')
+			{
+				for(t=3;t<5;t++)
+			{
+				adr2[t-3]=USART_RX_BUF[t];
+			}
+			//得到输入的地址位
+			for(t=3;t<len;t++)
+			{
+				if(USART_RX_BUF[t]==' ')
+				{
+					break;
+				}
+			}
+			//得到大小字符之后的空格的位置
+			for(j=t+1;j<len;j++)
+			{
+				if(USART_RX_BUF[j]==' ')
+				{ 
+					slen[k+1]='\0';
+					break;
+				}
+				else
+				{
+					slen[k-1]=USART_RX_BUF[j];
+					k=k+1;
+				}
+			}
+	        
+			//得到输入的byte大小
+			slen2=atoi(slen);
+			adr2[2]='\0';
+			sscanf(adr2,"%x",&adr);
+			AT24CXX_Read(adr,send,slen2);
+			LED1=!LED1;
+			delay_ms(200);
+			LED1=!LED1;
+			printf("\r\n");
+			for(t=0;t<slen2;t++)
+			{ 
+				USART_SendData(USART1,send[t]);	
+				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
+			}
+			
+			printf("\r\n\r\n");
+			USART_RX_STA=0;	
+			k=1;
+			}
+			else
+		{
+			for(t=0;t<2;t++)
+			{
+				adr1[t]=USART_RX_BUF[t];
+			}
+			for(t=2;t<len;t++)
+			{
+				message[t-2]=USART_RX_BUF[t];
+			}
+			adr1[2]='\0';
+			mlen=strlen(message);
+			message[mlen]='\0';
+			sscanf(adr1,"%x",&adr);
+			AT24CXX_Write(adr,(u8*)message,SIZE);
+			LED1=0;
+			delay_ms(500);
+			LED1=1;
+			printf("\r\n写入数据成功！");
+			printf("\r\n\r\n");
+			TIM3_Int_Init(5999,7199);
+			USART_RX_STA=0;
+			delay_ms(200);
+		}
+		}
+		
+		
+		delay_ms(10);
+		  
+	}
+		
+	
+	
+}

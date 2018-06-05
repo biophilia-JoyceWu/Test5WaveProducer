@@ -1,1 +1,0 @@
-D:\课件\嵌入式系统\Test3 APP+串口通信\计算机软件\CTCS-3 DMI\CTCS-3 DMI\bin\Debug\CTCS-3 DMI.exe.config

@@ -133,12 +133,12 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <Capability>1</Capability>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\STM32F10x_FWLib\inc;..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\KEY;..\HARDWARE\24CXX;..\HARDWARE\IIC;..\HARDWARE\LED;..\HARDWARE\LCD;..\HARDWARE\BEEP;..\HARDWARE\TIMER;..\USMART</IncludePath>
+              <IncludePath>..\CORE;..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\KEY;..\HARDWARE\24CXX;..\HARDWARE\IIC;..\HARDWARE\LED;..\HARDWARE\LCD;..\HARDWARE\BEEP;..\HARDWARE\TIMER;..\USMART;..\..\参考\ufoshen-STM32-homework4-master\STM32-homework4-master\STM32F10x_FWLib\inc;..\STM32F10x_FWLib\src;..\HARDWARE\ADC;..\HARDWARE\DAC;..\HARDWARE\DMA;..\HARDWARE\wave</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -382,11 +382,6 @@
           <GroupName>USER</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f10x_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\stm32f10x_it.c</FilePath>
@@ -395,6 +390,11 @@
               <FileName>system_stm32f10x.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\system_stm32f10x.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -414,7 +414,102 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>FWLIB</GroupName>
+          <GroupName>HARDWARE</GroupName>
+          <Files>
+            <File>
+              <FileName>24cxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\24CXX\24cxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>myiic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\IIC\myiic.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\KEY\key.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\LED\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>beep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\BEEP\beep.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\ADC\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>dac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\DAC\dac.c</FilePath>
+            </File>
+            <File>
+              <FileName>dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\DMA\dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>STM32_WaveOutput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\wave\STM32_WaveOutput.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>SYSTEM</GroupName>
+          <Files>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\delay\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\sys\sys.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\usart\usart.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USMART</GroupName>
+          <Files>
+            <File>
+              <FileName>usmart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USMART\usmart.c</FilePath>
+            </File>
+            <File>
+              <FileName>usmart_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USMART\usmart_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>usmart_str.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USMART\usmart_str.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>STM32F10x_FWLib</GroupName>
           <Files>
             <File>
               <FileName>misc.c</FileName>
@@ -531,60 +626,120 @@
               <FileType>1</FileType>
               <FilePath>..\STM32F10x_FWLib\src\stm32f10x_wwdg.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>HARDWARE</GroupName>
-          <Files>
             <File>
-              <FileName>24cxx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\24CXX\24cxx.c</FilePath>
+              <FileName>stm32f10x_wwdg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h</FilePath>
             </File>
             <File>
-              <FileName>myiic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\IIC\myiic.c</FilePath>
+              <FileName>stm32f10x_usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_usart.h</FilePath>
             </File>
             <File>
-              <FileName>key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\KEY\key.c</FilePath>
+              <FileName>stm32f10x_tim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_tim.h</FilePath>
             </File>
             <File>
-              <FileName>led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\LED\led.c</FilePath>
+              <FileName>stm32f10x_spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_spi.h</FilePath>
             </File>
             <File>
-              <FileName>beep.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\BEEP\beep.c</FilePath>
+              <FileName>stm32f10x_sdio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_sdio.h</FilePath>
             </File>
             <File>
-              <FileName>timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>SYSTEM</GroupName>
-          <Files>
-            <File>
-              <FileName>delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\delay\delay.c</FilePath>
+              <FileName>stm32f10x_rtc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_rtc.h</FilePath>
             </File>
             <File>
-              <FileName>sys.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\sys\sys.c</FilePath>
+              <FileName>stm32f10x_rcc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_rcc.h</FilePath>
             </File>
             <File>
-              <FileName>usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\usart\usart.c</FilePath>
+              <FileName>stm32f10x_pwr.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_pwr.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_iwdg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_iwdg.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_i2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_fsmc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_fsmc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_flash.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_exti.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_exti.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_dma.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dbgmcu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_dbgmcu.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dac.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_dac.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_crc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_crc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_cec.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_cec.h</FilePath>
+            </File>
+            <File>
+              <FileName>misc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\misc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_can.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_can.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_bkp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_bkp.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F10x_FWLib\inc\stm32f10x_adc.h</FilePath>
             </File>
           </Files>
         </Group>

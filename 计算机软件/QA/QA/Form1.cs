@@ -41,7 +41,6 @@ namespace QA
             cmbStop.SelectedIndex = 0;
             System.Text.UTF8Encoding utf8 = new System.Text.UTF8Encoding();
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialport1_DataReceived);//添加事件处理程序
-            
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -138,11 +137,11 @@ namespace QA
 
         private void serialport1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            System.Text.UTF8Encoding utf8 = new System.Text.UTF8Encoding();
+            serialPort1.Encoding = Encoding.GetEncoding("Gb2312");
             Byte[] readBytes = new Byte[serialPort1.BytesToRead];
             serialPort1.Read(readBytes, 0, readBytes.Length);//接收数据
             String decodedString = System.Text.Encoding.Default.GetString(readBytes);//接收端编码
-            txtReceive.AppendText("$接收："+decodedString+"\r\n");//添加内容textBox文本框中依次向后显示
+            txtReceive.AppendText("$接收："+decodedString+"\t\n");//添加内容textBox文本框中依次向后显示
         }
 
         private void cmbStop_SelectedIndexChanged(object sender, EventArgs e)
@@ -177,14 +176,15 @@ namespace QA
         private void txtSend_TextChanged(object sender, EventArgs e)
         {
             if (txtSend.Text != "")
-                btnNotAutoSend.Enabled = true;
+                btnwrite.Enabled = true;
             else
-                btnNotAutoSend.Enabled = false;
+                btnwrite.Enabled = false;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtSend.Text = "";
+            txtReceive.AppendText("请发送： 读ADR地址开始的 N BYTE \r\n");
         }
 
         private void btnCloseAll_Click(object sender, EventArgs e)
@@ -193,6 +193,69 @@ namespace QA
         }
 
         private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            byte[] Data = new byte[1];
+            if (serialPort1.IsOpen)//判断串口是否打开，如果打开执行下一步操作
+            {
+                if (txtSend.Text != "")
+                {
+
+                    try
+                    {
+                        serialPort1.Encoding = Encoding.GetEncoding("Gb2312");
+                        Byte[] writeBytes = serialPort1.Encoding.GetBytes(txtSend.Text+"\n\t");//发送端编码GB2312
+                        serialPort1.Write(writeBytes, 0, writeBytes.Length);//发送数据
+                        txtReceive.AppendText("$发送：" + txtSend.Text + "\n");//添加内容textBox文本框中依次向后显示
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("串口数据写入错误", "错误");//出错提示
+                        serialPort1.Close();
+                        btnOpen.Enabled = true;//打开串口按钮可用
+                        btnClose.Enabled = false;//关闭串口按钮不可用
+                    }
+
+
+                }
+            }
+        }
+
+        private void btnread_Click(object sender, EventArgs e)
+        {
+            byte[] Data = new byte[1];
+            if (serialPort1.IsOpen)//判断串口是否打开，如果打开执行下一步操作
+            {
+                if (txtSend.Text != "")
+                {
+
+                    try
+                    {
+                        serialPort1.Encoding = Encoding.GetEncoding("Gb2312");
+                        Byte[] writeBytes = serialPort1.Encoding.GetBytes(txtSend.Text);//发送端编码GB2312
+                        serialPort1.Write(writeBytes, 0, writeBytes.Length);//发送数据
+                        txtReceive.AppendText("$发送：" + txtSend.Text + "\n");//添加内容textBox文本框中依次向后显示
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("串口数据写入错误", "错误");//出错提示
+                        serialPort1.Close();
+                        btnOpen.Enabled = true;//打开串口按钮可用
+                        btnClose.Enabled = false;//关闭串口按钮不可用
+                    }
+
+
+                }
+            }
+        }
+
+        private void txtReceive_TextChanged(object sender, EventArgs e)
         {
 
         }

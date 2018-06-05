@@ -30,7 +30,7 @@ void TIM3_Int_Init(u16 arr,u16 psc)
 	NVIC_Init(&NVIC_InitStructure);  //初始化NVIC寄存器
 
 
-	TIM_Cmd(TIM3, ENABLE);  //使能TIMx					 
+	TIM_Cmd(TIM3, ENABLE);  //使能TIM3					 
 }
 //定时器3中断服务程序
 void TIM3_IRQHandler(void)   //TIM3中断
@@ -42,7 +42,22 @@ void TIM3_IRQHandler(void)   //TIM3中断
 		}
 }
 
+void TIM2_Int_Init(void)
+{
+TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 
+RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);//初始化TIM2的时钟
+
+TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);//初始化时基结构体
+TIM_TimeBaseStructure.TIM_Period = 100;//周期值为100
+TIM_TimeBaseStructure.TIM_Prescaler = 0;//不预分频
+TIM_TimeBaseStructure.TIM_ClockDivision = 0x0;//时钟不分频
+TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;//增计数
+TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);//初始化TIM2
+
+TIM_SelectOutputTrigger(TIM2, TIM_TRGOSource_Update);//设置触发源为更新触发，更新周期一次，则触发一次DAC转换
+TIM_Cmd(TIM2, ENABLE);//打开定时器
+}
 
 
 

@@ -41,7 +41,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnOpen = new System.Windows.Forms.Button();
-            this.btnNotAutoSend = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.txtSend = new System.Windows.Forms.TextBox();
             this.txtReceive = new System.Windows.Forms.TextBox();
@@ -50,6 +49,8 @@
             this.btnCloseAll = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnwrite = new System.Windows.Forms.Button();
+            this.btnread = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -196,16 +197,6 @@
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
-            // btnNotAutoSend
-            // 
-            this.btnNotAutoSend.Location = new System.Drawing.Point(319, 290);
-            this.btnNotAutoSend.Name = "btnNotAutoSend";
-            this.btnNotAutoSend.Size = new System.Drawing.Size(75, 23);
-            this.btnNotAutoSend.TabIndex = 4;
-            this.btnNotAutoSend.Text = "提问";
-            this.btnNotAutoSend.UseVisualStyleBackColor = true;
-            this.btnNotAutoSend.Click += new System.EventHandler(this.button1_Click);
-            // 
             // txtSend
             // 
             this.txtSend.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -223,6 +214,7 @@
             this.txtReceive.Name = "txtReceive";
             this.txtReceive.Size = new System.Drawing.Size(269, 131);
             this.txtReceive.TabIndex = 6;
+            this.txtReceive.TextChanged += new System.EventHandler(this.txtReceive_TextChanged);
             // 
             // btnClose
             // 
@@ -236,7 +228,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(319, 337);
+            this.btnClear.Location = new System.Drawing.Point(513, 290);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 8;
@@ -248,7 +240,7 @@
             // 
             this.btnCloseAll.BackColor = System.Drawing.SystemColors.Control;
             this.btnCloseAll.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCloseAll.Location = new System.Drawing.Point(519, 290);
+            this.btnCloseAll.Location = new System.Drawing.Point(519, 327);
             this.btnCloseAll.Name = "btnCloseAll";
             this.btnCloseAll.Size = new System.Drawing.Size(69, 49);
             this.btnCloseAll.TabIndex = 9;
@@ -263,7 +255,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 12);
             this.label6.TabIndex = 10;
-            this.label6.Text = "接收栏";
+            this.label6.Text = "显示栏";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
@@ -273,13 +265,35 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 11;
-            this.label7.Text = "发送栏";
+            this.label7.Text = "编辑栏";
+            // 
+            // btnwrite
+            // 
+            this.btnwrite.Location = new System.Drawing.Point(319, 290);
+            this.btnwrite.Name = "btnwrite";
+            this.btnwrite.Size = new System.Drawing.Size(75, 23);
+            this.btnwrite.TabIndex = 12;
+            this.btnwrite.Text = "写入数据";
+            this.btnwrite.UseVisualStyleBackColor = true;
+            this.btnwrite.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // btnread
+            // 
+            this.btnread.Location = new System.Drawing.Point(319, 327);
+            this.btnread.Name = "btnread";
+            this.btnread.Size = new System.Drawing.Size(75, 23);
+            this.btnread.TabIndex = 13;
+            this.btnread.Text = "读取数据";
+            this.btnread.UseVisualStyleBackColor = true;
+            this.btnread.Click += new System.EventHandler(this.btnread_Click);
             // 
             // QA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 388);
+            this.Controls.Add(this.btnread);
+            this.Controls.Add(this.btnwrite);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCloseAll);
@@ -287,11 +301,10 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtReceive);
             this.Controls.Add(this.txtSend);
-            this.Controls.Add(this.btnNotAutoSend);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.groupBox1);
             this.Name = "QA";
-            this.Text = "作业三 串口通信界面                     ";
+            this.Text = "I2C总线实验";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -314,7 +327,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnOpen;
-        private System.Windows.Forms.Button btnNotAutoSend;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.TextBox txtSend;
         private System.Windows.Forms.TextBox txtReceive;
@@ -323,6 +335,8 @@
         private System.Windows.Forms.Button btnCloseAll;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnwrite;
+        private System.Windows.Forms.Button btnread;
     }
 }
 
